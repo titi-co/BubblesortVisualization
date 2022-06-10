@@ -1,5 +1,5 @@
 let sequence = [];
-let barWidth = 20;
+let barWidth = 10;
 
 let states = [];
 
@@ -26,10 +26,14 @@ async function bubbleSort(arr, n) {
       states[j + 1] = 0;
     }
   }
+
+  for (let i = 0; i < n; i++) {
+    await Promise.all([(states[i] = 1), sleep(25)]);
+  }
 }
 
 async function swap(arr, a, b) {
-  await sleep(100);
+  await sleep(50);
   let temp = arr[a];
   arr[a] = arr[b];
   arr[b] = temp;
