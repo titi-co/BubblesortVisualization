@@ -41,7 +41,6 @@ function sleep(ms) {
 
 function draw() {
   background(0);
-  noStroke();
 
   for (let i = 0; i < sequence.length; i++) {
     if (states[i] == 1) fill("#00FF00");
