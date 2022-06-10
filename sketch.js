@@ -1,5 +1,5 @@
 let sequence = [];
-let barWidth = 10;
+let barWidth = 20;
 
 let states = [];
 
@@ -18,16 +18,18 @@ async function bubbleSort(arr, n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n - i - 1; j++) {
       states[j] = 1;
+      states[j + 1] = 2;
       if (arr[j] > arr[j + 1]) {
         await swap(arr, j, j + 1);
       }
       states[j] = 0;
+      states[j + 1] = 0;
     }
   }
 }
 
 async function swap(arr, a, b) {
-  await sleep(10);
+  await sleep(100);
   let temp = arr[a];
   arr[a] = arr[b];
   arr[b] = temp;
@@ -43,6 +45,7 @@ function draw() {
 
   for (let i = 0; i < sequence.length; i++) {
     if (states[i] == 1) fill("#00FF00");
+    else if (states[i] == 2) fill("#FF0000");
     else fill(255);
     rect(i * barWidth, height - sequence[i], barWidth, sequence[i]);
   }
